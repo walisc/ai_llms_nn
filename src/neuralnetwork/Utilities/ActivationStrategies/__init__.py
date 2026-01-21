@@ -1,0 +1,4 @@
+class ACTIVATION_FUNCTION_STRATEGY_NAMES:
+    SIGMOID = "Sigmoid"
+    RELU = "ReLU"
+    TANH = "Tanh"

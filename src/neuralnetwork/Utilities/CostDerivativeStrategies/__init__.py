@@ -1,0 +1,3 @@
+class COST_DERIVATIVE_STRATEGY_NAMES:
+    MSE = "MSE"
+    CROSS_ENTROPY = "CrossEntropy"
