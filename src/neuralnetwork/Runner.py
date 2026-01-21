@@ -50,9 +50,12 @@ def do_run(props: RunProps):
     
     test_data_input = data.input[int(len(data.input) * props.train_percentage):]
     test_data_output = data.output[int(len(data.input) * props.train_percentage):]  
-    for i in range(len(test_data_input)):
-        output = nn.do_forward_propagation([test_data_input[i]], [test_data_output[i]])
-        print(f"Evaluation Cost:- {output}")
+
+    output = nn.do_forward_propagation(test_data_input, test_data_output)
+    print(f"Evaluation Cost:- {output}")
+    
+
+        
             
 
 

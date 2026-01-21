@@ -96,21 +96,21 @@ class VanillaNeuralNetwork(NNBaseStrategy):
         self.entry_layer.do_back_propagation()
 
 
-        print(self.output_layer.get_grad_info())
-        for hl in self.hidden_layers:
-            print(hl.get_grad_info())
+        # print(self.output_layer.get_grad_info())
+        # for hl in self.hidden_layers:
+        #     print(hl.get_grad_info())
 
-        print(self.entry_layer.get_grad_info())
+        # print(self.entry_layer.get_grad_info())
 
-        print("\n\nUpdated Parameters:\m")
-        print("Out Layer Biases:")
-        print(self.output_layer.nodes[0].bias)
-        print("Hidden Layer 0 Weights:")
-        print([[v.value for v in n.outgoing_weights] for n in self.hidden_layers[0].nodes])
-        print("Hidden Layer 0 Biases:")
-        print([n.bias for n in self.hidden_layers[0].nodes])
-        print("Entry Layer 0 Weights:")
-        print([[v.value for v in n.outgoing_weights] for n in self.entry_layer.nodes])
+        # print("\n\nUpdated Parameters:\m")
+        # print("Out Layer Biases:")
+        # print(self.output_layer.nodes[0].bias)
+        # print("Hidden Layer 0 Weights:")
+        # print([[v.value for v in n.outgoing_weights] for n in self.hidden_layers[0].nodes])
+        # print("Hidden Layer 0 Biases:")
+        # print([n.bias for n in self.hidden_layers[0].nodes])
+        # print("Entry Layer 0 Weights:")
+        # print([[v.value for v in n.outgoing_weights] for n in self.entry_layer.nodes])
 
         self.do_reset()
 
