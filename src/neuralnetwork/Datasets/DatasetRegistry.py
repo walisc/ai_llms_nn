@@ -1,10 +1,11 @@
 from neuralnetwork.Datasets.DummyDataSet.DummyDataSet import DummyDataSet
-from neuralnetwork.Datasets.Property.PropertyData import PropertyDataSet
+from neuralnetwork.Datasets.DummyPropertyDataSet.DummyPropertyDataSet import DummyPropertyDataSet
+
 
 
 class DataSetRegistry:
     _datasets = {
-        PropertyDataSet.get_id(): PropertyDataSet,
+        DummyPropertyDataSet.get_id(): DummyPropertyDataSet,
         DummyDataSet.get_id(): DummyDataSet
     }
 

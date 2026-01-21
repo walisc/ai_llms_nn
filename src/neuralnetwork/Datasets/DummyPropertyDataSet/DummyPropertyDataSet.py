@@ -1,23 +1,22 @@
 import random
 import csv
+from typing import Any
 from neuralnetwork.Datasets.DataSet import GeneratableDataSet, NNData, PreferredLayerDetails
-import math
 import statistics
 
 
-class PropertyDataSet(GeneratableDataSet):
+class DummyPropertyDataSet(GeneratableDataSet):
 
     @classmethod
     def get_id(cls) -> str:
-        return "PropertyDataSet"
+        return "DummyPropertyDataSet"
     
-    def save_data(self, id, data):
-        keys = data[0].keys()
-        with open(f"{self.get_saved_data_path(id)}.csv", 'w', newline='') as f:
-            writer = csv.DictWriter(f, fieldnames=keys)
-            writer.writeheader()
-            writer.writerows(data)
-
+    def is_cacheable(self):
+        return True
+    
+    def is_saveable(self):
+        return True
+    
     def load_saved_data(self, id):
         try:
             with open(f"{self.get_saved_data_path(id)}.csv", 'r') as f:
@@ -26,6 +25,15 @@ class PropertyDataSet(GeneratableDataSet):
         except FileNotFoundError:
             return None
         
+    
+    def save_data(self, id, data):
+        keys = data[0].keys()
+        with open(f"{self.get_saved_data_path(id)}.csv", 'w', newline='') as f:
+            writer = csv.DictWriter(f, fieldnames=keys)
+            writer.writeheader()
+            writer.writerows(data)
+
+
     def generate_data(self, properties):
         all_data = []
 
@@ -74,7 +82,8 @@ class PropertyDataSet(GeneratableDataSet):
 
         return all_data
 
-    def before_data_send(self, data):
+        
+    def prepare_data(self, data:Any) -> NNData: 
         cols_ver = {}
 
         for p in data:
@@ -97,9 +106,6 @@ class PropertyDataSet(GeneratableDataSet):
 
         return NNData([get_standardised_value(p) for p in data], [[p["is_good_investment"]] for p in data])
 
-    def is_saveable(self):
-        return True
-    
 
     def get_input_size(self) -> int:
         return 3
